@@ -88,7 +88,7 @@ export function PatientContact() {
           className="relative z-10 w-40 h-40 rounded-full flex items-center justify-center overflow-hidden">
 
           <img
-            src="/image.png"
+            src="./image.png"
             alt="Patient"
             className="w-full h-full object-cover rounded-full" />
 

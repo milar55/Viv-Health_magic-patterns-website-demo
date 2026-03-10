@@ -136,7 +136,7 @@ export function MultiPatientOverview() {
 
                   <div className="w-9 h-9 rounded-full bg-[#F0ECF5] border border-[#E8E2F0] overflow-hidden flex items-center justify-center">
                     <img
-                      src="/image.png"
+                      src="./image.png"
                       alt="Patient"
                       className="w-full h-full object-cover" />
 
