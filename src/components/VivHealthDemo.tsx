@@ -56,16 +56,7 @@ export function VivHealthDemo() {
     }
   };
   return (
-    <div className="w-full min-h-screen bg-[#1A1025] flex items-center justify-center p-4 md:p-8 font-sans relative overflow-hidden">
-      {/* Kato-style Side Navigation Lines */}
-      <div className="absolute inset-0 pointer-events-none flex items-center justify-between px-4 md:px-12 z-0">
-        <div className="flex items-center w-full max-w-[1200px] mx-auto relative">
-          <div className="w-3 h-3 bg-white rounded-sm z-10" />
-          <div className="h-[1px] bg-white/20 flex-1" />
-          <div className="h-[1px] bg-white/20 flex-1" />
-          <div className="w-3 h-3 bg-[#1A1025] border border-white/40 rounded-sm z-10" />
-        </div>
-      </div>
+    <div className="w-full min-h-screen bg-white flex items-center justify-center p-4 md:p-8 font-sans relative overflow-hidden">
 
       <div
         className="relative w-full max-w-5xl aspect-[16/9] bg-white rounded-2xl shadow-2xl overflow-hidden border border-white/10 cursor-pointer z-10 flex flex-col"
