@@ -79,7 +79,7 @@ export function ChatTranscript() {
           clearInterval(msgInterval);
           return prev;
         });
-      }, 600);
+      }, 1800);
       return () => clearInterval(msgInterval);
     }, 2400);
     return () => {
