@@ -8,9 +8,13 @@ import { ClinicianDashboard } from './ClinicianDashboard';
 import { MultiPatientOverview } from './MultiPatientOverview';
 const SCENE_DURATIONS = [7000, 10000, 6000, 7000, 5000];
 const TOTAL_SCENES = 5;
+const BASE_WIDTH = 1024;
+const BASE_HEIGHT = 576;
 export function VivHealthDemo() {
   const [currentScene, setCurrentScene] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [scale, setScale] = useState(1);
+  const sceneRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const scheduleNext = (scene: number) => {
     if (timerRef.current) clearTimeout(timerRef.current);
@@ -30,6 +34,16 @@ export function VivHealthDemo() {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
   }, [isPlaying]);
+  useEffect(() => {
+    const el = sceneRef.current;
+    if (!el) return;
+    const observer = new ResizeObserver(([entry]) => {
+      const { width, height } = entry.contentRect;
+      setScale(Math.min(width / BASE_WIDTH, height / BASE_HEIGHT));
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
   const togglePlayPause = () => {
     setIsPlaying(!isPlaying);
   };
@@ -63,8 +77,19 @@ export function VivHealthDemo() {
         onClick={togglePlayPause}>
 
         {/* Scene Area */}
-        <div className="flex-1 relative overflow-hidden">
-          <AnimatePresence mode="sync">{renderScene()}</AnimatePresence>
+        <div ref={sceneRef} className="flex-1 relative overflow-hidden">
+          <div
+            style={{
+              width: BASE_WIDTH,
+              height: BASE_HEIGHT,
+              transform: `scale(${scale})`,
+              transformOrigin: 'top left',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+            }}>
+            <AnimatePresence mode="sync">{renderScene()}</AnimatePresence>
+          </div>
         </div>
 
         {/* Progress Dots & Controls (Overlay) */}
