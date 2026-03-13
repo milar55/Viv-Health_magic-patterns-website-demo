@@ -6,7 +6,7 @@ import { TriageRouting } from './TriageRouting';
 import { ChatTranscript } from './ChatTranscript';
 import { ClinicianDashboard } from './ClinicianDashboard';
 import { MultiPatientOverview } from './MultiPatientOverview';
-const SCENE_DURATIONS = [3000, 9000, 5000, 6000, 5000];
+const SCENE_DURATIONS = [7000, 10000, 6000, 7000, 5000];
 const TOTAL_SCENES = 5;
 export function VivHealthDemo() {
   const [currentScene, setCurrentScene] = useState(0);
